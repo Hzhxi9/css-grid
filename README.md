@@ -210,6 +210,21 @@ grid-auto-flow 还可以设成 `row dense` 和 `column dense`。
 
 这两个值主要用于某些项目指定位置以后, 剩下的项目怎么自动放置
 
+8. justify-items、 align-items、 place-items
+
+- justify-items: 设置单元格内容的水平位置(左中右)
+- align-items: 设置单元格内容的垂直位置(上中下)
+- place-items: align-items and justify-items 的合并简写形式
+
+  - `place-items: <align-items> <justify-items>`
+  - 如果省略第二个值，则浏览器认为与第一个值相等
+
+> 两个属性的值完全相同
+> start: 对齐单元格的起始边缘
+> end: 对齐单元格的起始边缘
+> center: 单元格内部居中
+> stretch: 拉伸，占满单元格的整个宽度（默认值）
+
 
 四、 css grid 函数 以及 关键字
 
