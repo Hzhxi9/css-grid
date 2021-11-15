@@ -1,0 +1,27 @@
+@import url('../common/common.css');
+
+.container  {
+    width: 300px;
+    height: 300px;
+    grid-template-columns: repeat(3, 100px);
+    grid-template-rows: repeat(3, 100px);
+    /* 改变顺序 先列后行 */
+    grid-auto-flow: column;
+    /* 先行后列并且尽可能紧密填满 */
+    grid-auto-flow: row dense;
+    /* 先列后行并且尽量填满空格 */
+    grid-auto-flow: column dense;
+}
+.container > div {
+    font-size: 4em;
+}
+
+.item-1{
+    grid-column-start: 1;
+    grid-column-end: 3;  
+}
+
+.item-2 {
+    grid-column-start: 1;
+    grid-column-end: 3;  
+}

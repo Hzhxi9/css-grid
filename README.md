@@ -159,13 +159,15 @@ grid-template-areas 用于定义区域
   grid-template-row: 100px 100px 100px;
   grid-template-columns: 100px 100px 100px;
   /* 先划分为九个单元格, 然后定义为a 到 i 九个区域, 分别对应这九个单元格 */
-  grid-template-areas: 'a b c'
-                       'd e f'
-                       'd e f';
+  grid-template-areas:
+    'a b c'
+    'd e f'
+    'd e f';
   /* 多个单元格合并成一个区域 */
- grid-template-areas: 'a a a'
-                      'b b b'
-                      'c c c';
+  grid-template-areas:
+    'a a a'
+    'b b b'
+    'c c c';
 }
 ```
 
@@ -174,19 +176,40 @@ grid-template-areas 用于定义区域
 ```css
 .container {
   /* 顶部是页眉区域header，底部是页脚区域footer，中间部分则为main和sidebar */
-  grid-template-areas: "header header header"
-                       "main main sidebar"
-                       "footer footer footer";
+  grid-template-areas:
+    'header header header'
+    'main main sidebar'
+    'footer footer footer';
   /* 如果某些区域不需要利用，则使用"点"（.）表示。 */
   /* 中间一列为点，表示没有用到该单元格，或者该单元格不属于任何区域。 */
-  grid-template-areas: "a . c"
-                       "d . f"
-                       "g . i";
+  grid-template-areas:
+    'a . c'
+    'd . f'
+    'g . i';
 }
 ```
 
 > 区域的命名会影响到网格线。每个区域的起始网格线，会自动命名为区域名-start，终止网格线自动命名为区域名-end。
-> 比如，区域名为header，则起始位置的水平网格线和垂直网格线叫做header-start，终止位置的水平网格线和垂直网格线叫做header-end。
+> 比如，区域名为 header，则起始位置的水平网格线和垂直网格线叫做 header-start，终止位置的水平网格线和垂直网格线叫做 header-end。
+
+7. grid-auto-flow
+
+划分网格以后，容器的子元素会按照顺序，自动放置在每一个网格
+
+默认的放置顺序是"先行后列"，即先填满第一行，再开始放入第二行，即下图数字的顺序
+
+这个顺序由 grid-auto-flow 属性决定，默认值是 row，即"先行后列"。也可以将它设成 column，变成"先列后行"。
+
+```css
+.container {
+  grid-auto-flow: column;
+}
+```
+
+grid-auto-flow 还可以设成 `row dense` 和 `column dense`。
+
+这两个值主要用于某些项目指定位置以后, 剩下的项目怎么自动放置
+
 
 四、 css grid 函数 以及 关键字
 
