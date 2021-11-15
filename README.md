@@ -85,6 +85,109 @@ div {
 }
 ```
 
+3. 网格线的名称
+
+grid-template-columns、grid-template-rows 属性里面可以使用方括号, 指定每一根网格线的名字, 方便以后引用
+
+网格布局允许同一根线有多个名字, 比如 `[fifth-line row-5]`
+
+```css
+.container {
+  /*
+   * 指定网格布局为 3 * 3, 因此有 4 根 垂直网格线 和 4 根 水平网格线
+   * 方括号里面依次是这八根线的名字
+   */
+  grid-template-columns: [c1] 100px [c2] 100px [c3] auto [c4];
+  grid-template-rows: [r1] 100px [r2] 100px [r3] auto [r4];
+}
+```
+
+4. 布局实例
+
+grid-template-columns 属性对于网页布局非常有用。
+
+- 两栏式布局
+
+```css
+.container {
+  display: grid;
+  /* 左边栏设为70%，右边栏设为30%。 */
+  grid-template-columns: 70% 30%;
+}
+```
+
+- 十二网格布局
+
+```css
+.container {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+}
+```
+
+5. grid-row-gap、grid-columns、grid-gap 属性
+
+- grid-row-gap: 设置行与行的间隔(行间距)
+- grid-column-gap: 设置列与列的间隔(列间距)
+- grid-gap: grid-column-gap 和 grid-row-gap 的合并简写形式
+
+  - `grid-gap: <grid-row-gap> <grid-column-gap>`
+  - 省略了第二个值, 浏览器认为第二个值等于第一个值
+
+```css
+.container {
+  grid-row-gap: 20px;
+  grid-column-gap: 20px;
+}
+
+.container {
+  grid-gap: 20px 20px;
+}
+```
+
+> 根据最新标准，上面三个属性名的 grid-前缀已经删除，grid-column-gap 和 grid-row-gap 写成 column-gap 和 row-gap，grid-gap 写成 gap。
+
+6. grid-template-areas
+
+网格布局允许指定区域, 一个区域由单个或多个单元格组成
+
+grid-template-areas 用于定义区域
+
+```css
+.container {
+  display: grid;
+  grid-template-row: 100px 100px 100px;
+  grid-template-columns: 100px 100px 100px;
+  /* 先划分为九个单元格, 然后定义为a 到 i 九个区域, 分别对应这九个单元格 */
+  grid-template-areas: 'a b c'
+                       'd e f'
+                       'd e f';
+  /* 多个单元格合并成一个区域 */
+ grid-template-areas: 'a a a'
+                      'b b b'
+                      'c c c';
+}
+```
+
+布局实例
+
+```css
+.container {
+  /* 顶部是页眉区域header，底部是页脚区域footer，中间部分则为main和sidebar */
+  grid-template-areas: "header header header"
+                       "main main sidebar"
+                       "footer footer footer";
+  /* 如果某些区域不需要利用，则使用"点"（.）表示。 */
+  /* 中间一列为点，表示没有用到该单元格，或者该单元格不属于任何区域。 */
+  grid-template-areas: "a . c"
+                       "d . f"
+                       "g . i";
+}
+```
+
+> 区域的命名会影响到网格线。每个区域的起始网格线，会自动命名为区域名-start，终止网格线自动命名为区域名-end。
+> 比如，区域名为header，则起始位置的水平网格线和垂直网格线叫做header-start，终止位置的水平网格线和垂直网格线叫做header-end。
+
 四、 css grid 函数 以及 关键字
 
 1. repeat(): 简化重复的值
@@ -163,45 +266,5 @@ fr 可以与绝对长度的单位结合使用
      * 除非单元格内容设置了min-width，且这个值大于最大宽度。
      **/
   gird-template-columns: 100px auto 80px;
-}
-```
-
-6. 网格线的名称
-
-grid-template-columns、grid-template-rows 属性里面可以使用方括号, 指定每一根网格线的名字, 方便以后引用
-
-网格布局允许同一根线有多个名字, 比如 `[fifth-line row-5]`
-
-```css
-.container {
-  /*
-   * 指定网格布局为 3 * 3, 因此有 4 根 垂直网格线 和 4 根 水平网格线
-   * 方括号里面依次是这八根线的名字
-   */
-  grid-template-columns: [c1] 100px [c2] 100px [c3] auto [c4];
-  grid-template-rows: [r1] 100px [r2] 100px [r3] auto [r4];
-}
-```
-
-7. 布局实例
-
-grid-template-columns 属性对于网页布局非常有用。
-
-- 两栏式布局
-
-```css
-.container {
-  display: grid;
-  /* 左边栏设为70%，右边栏设为30%。 */
-  grid-template-columns: 70% 30%;
-}
-```
-
-- 十二网格布局
-
-```css
-.container {
-  display: grid;
-  grid-template-columns: repeat(12, 1fr);
 }
 ```
