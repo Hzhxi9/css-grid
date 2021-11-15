@@ -48,3 +48,20 @@
     /* 第一列的宽度为30px，第二列的宽度是第三列的一半。 */
     grid-template-columns: repeat(3, 30px 1fr 2fr);
 }
+
+/* minmax 函数 */
+.container {
+    /* grid-template-columns: repeat(3, 1fr 1fr minmax(100px 1fr)) */
+}
+
+/* auto 关键字 */
+.container {
+    /* 第一列是 100px, 第三列是 80px, 第二列就是 120px */
+    grid-template-columns: 100px auto 80px;
+}
+
+/* 网格线名称 */
+.container {
+    grid-template-columns: [c1] 100px [c2] 100px [c3] auto [c4];
+    grid-template-rows: [r1] 100px [r2] 100px [r3] auto [row-4 r4];
+}

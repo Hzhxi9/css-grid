@@ -141,3 +141,67 @@ fr 可以与绝对长度的单位结合使用
   grid-template-columns: 150px 1fr 2fr;
 }
 ```
+
+4. minmax(): 产生一个长度范围, 表示长度就在这个范围之中
+
+   - @param 最小值
+   - @param 最大值
+
+```css
+.container {
+  /* minmax(100px 1fr): 表示列宽不小于100px，不大于1fr。 */
+  grid-template-columns: 1fr 1fr minmax(100px 1fr);
+}
+```
+
+5. auto 关键字: 由浏览器自己决定长度
+
+```css
+.container {
+  /*
+     * 第二列的宽度，基本上等于该列单元格的最大宽度，
+     * 除非单元格内容设置了min-width，且这个值大于最大宽度。
+     **/
+  gird-template-columns: 100px auto 80px;
+}
+```
+
+6. 网格线的名称
+
+grid-template-columns、grid-template-rows 属性里面可以使用方括号, 指定每一根网格线的名字, 方便以后引用
+
+网格布局允许同一根线有多个名字, 比如 `[fifth-line row-5]`
+
+```css
+.container {
+  /*
+   * 指定网格布局为 3 * 3, 因此有 4 根 垂直网格线 和 4 根 水平网格线
+   * 方括号里面依次是这八根线的名字
+   */
+  grid-template-columns: [c1] 100px [c2] 100px [c3] auto [c4];
+  grid-template-rows: [r1] 100px [r2] 100px [r3] auto [r4];
+}
+```
+
+7. 布局实例
+
+grid-template-columns 属性对于网页布局非常有用。
+
+- 两栏式布局
+
+```css
+.container {
+  display: grid;
+  /* 左边栏设为70%，右边栏设为30%。 */
+  grid-template-columns: 70% 30%;
+}
+```
+
+- 十二网格布局
+
+```css
+.container {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+}
+```
