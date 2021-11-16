@@ -2,11 +2,14 @@
 @import url('../common/common.css');
 
 
+
+
 /* 绝对单位 */
 .container {
     grid-template-columns: 100px 100px 100px;
     grid-template-rows: 100px 100px 100px;
 }
+
 
 /* 百分比 */
 .container {
@@ -87,4 +90,35 @@
     grid-template-areas: 'header header header'
                          'main main slider'
                          'footer footer footer';
+}
+
+body{
+    display: grid;
+    /* 整个内容区域在容器里面的水平位置 和 垂直位置 */
+    justify-content: space-evenly;
+    align-content: center;
+}
+
+.container {
+    grid-template-columns: repeat(3, 100px);
+    grid-template-rows: repeat(3, 100px);
+    /* 单元格内容的水平位置 和 垂直位置 */
+    justify-items: center;
+    align-items: center;
+    /* 浏览器自动创建的多余网格的列宽和行高。 */
+    grid-auto-rows: 50px;;
+}
+
+.item-8{
+    grid-row-start: 4;
+    grid-column-start: 2;
+}
+
+.item-9{
+    grid-row-start: 5;
+    grid-column-start: 3;
+}
+
+.container > div {
+    font-size: 2em;
 }
