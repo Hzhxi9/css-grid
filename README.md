@@ -225,6 +225,38 @@ grid-auto-flow 还可以设成 `row dense` 和 `column dense`。
 > center: 单元格内部居中
 > stretch: 拉伸，占满单元格的整个宽度（默认值）
 
+9. justify-content、align-content、place-content 属性
+
+- justify-content: 整个内容区域在容器里面的水平位置(左中右)
+- align-content: 整个内容区域的垂直位置(上中下)
+- place-content: align-content 属性和 justify-content 属性的合并简写形式。
+
+  - `place-items: <align-items> <justify-items>`
+  - 如果省略第二个值，则浏览器认为与第一个值相等
+
+> 两个属性的值完全相同
+> start: 对齐容器的起始边框
+> end: 对齐容器的结束边框
+> center: 容器内部居中
+> stretch: 项目大小没有指定时，拉伸占据整个网格容器。
+> space-around: 每个项目两侧的间隔相等。所以，项目之间的间隔比项目与容器边框的间隔大一倍。
+> space-between: 项目与项目的间隔相等，项目与容器边框之间没有间隔。
+> space-evenly: 项目与项目的间隔相等，项目与容器边框之间也是同样长度的间隔。
+
+10. grid-auto-columns、grid-auto-rows
+
+有时候，一些项目的指定位置，在现有网格的外部。比如网格只有 3 列，但是某一个项目指定在第 5 行。这时，浏览器会自动生成多余的网格，以便放置项目。
+
+grid-auto-columns 和 grid-auto-rows 用来设置浏览器器自动创建的多余网格的列宽和行高
+
+它们的写法与 grid-template-columns 和 grid-template-rows 完全相同。
+
+如果不指定这两个属性，浏览器完全根据单元格内容的大小，决定新增网格的列宽和行高。
+
+11. grid-template、grid 属性
+
+- grid-template: grid-template-columns、grid-template-rows 和 grid-template-areas 这三个属性的合并简写形式。
+- grid: grid-template-rows、grid-template-columns、grid-template-areas、 grid-auto-rows、grid-auto-columns、grid-auto-flow 这六个属性的合并简写形式。
 
 四、 css grid 函数 以及 关键字
 
